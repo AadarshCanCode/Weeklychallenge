@@ -1,14 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Trophy, Zap, Target } from "lucide-react";
-
 export function Hero() {
-  return (
-    <section className="pt-32 pb-20 px-4">
+  return <section className="pt-32 pb-20 px-4">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center space-y-6 animate-fade-in">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-4">
             <Zap className="h-4 w-4 text-primary" />
-            <span className="text-sm font-medium text-primary">Week 12 • 2025</span>
+            <span className="text-sm font-medium text-primary">Game Mode ON    </span>
           </div>
           
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
@@ -46,6 +44,5 @@ export function Hero() {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 }
