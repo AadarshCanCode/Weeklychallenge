@@ -1,6 +1,13 @@
 import { ThemeToggle } from "./ThemeToggle";
 import logo from "@/assets/aceint-logo.png";
 
+const smoothScrollTo = (id: string) => {
+  const element = document.querySelector(id);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+};
+
 export function Header() {
   return (
     <header className="fixed top-0 w-full z-50 border-b border-border/20 bg-background/95 backdrop-blur-xl">
@@ -10,10 +17,18 @@ export function Header() {
         </div>
         
         <nav className="hidden md:flex items-center gap-6">
-          <a href="#challenges" className="text-sm font-medium text-foreground/70 hover:text-primary transition-all hover:scale-105">
+          <a 
+            href="#challenges" 
+            onClick={(e) => { e.preventDefault(); smoothScrollTo('#challenges'); }}
+            className="text-sm font-medium text-foreground/70 hover:text-primary transition-all hover:scale-105 cursor-pointer"
+          >
             Challenges
           </a>
-          <a href="#why-choose" className="text-sm font-medium text-foreground/70 hover:text-primary transition-all hover:scale-105">
+          <a 
+            href="#why-choose" 
+            onClick={(e) => { e.preventDefault(); smoothScrollTo('#why-choose'); }}
+            className="text-sm font-medium text-foreground/70 hover:text-primary transition-all hover:scale-105 cursor-pointer"
+          >
             Why Choose AceInt
           </a>
         </nav>

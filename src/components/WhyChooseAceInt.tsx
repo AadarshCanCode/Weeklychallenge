@@ -1,7 +1,9 @@
 import { Zap, Target, Trophy, Brain, Rocket, Star } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export function WhyChooseAceInt() {
+  const { ref, isVisible } = useScrollAnimation();
   const features = [
     {
       icon: Brain,
@@ -37,7 +39,7 @@ export function WhyChooseAceInt() {
 
   return (
     <section id="why-choose" className="py-20 px-4 bg-muted/30">
-      <div className="container mx-auto max-w-6xl">
+      <div ref={ref} className="container mx-auto max-w-6xl">
         <div className="text-center space-y-4 mb-12 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold">
             Why Choose <span className="gradient-text">AceInt</span>
@@ -53,8 +55,13 @@ export function WhyChooseAceInt() {
             return (
               <Card 
                 key={index}
-                className="bento-card p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-border/50"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className={`bento-card p-6 hover:shadow-xl transition-all duration-500 hover:-translate-y-1 border-border/50 ${
+                  isVisible ? 'animate-slide-up opacity-100' : 'opacity-0'
+                }`}
+                style={{ 
+                  animationDelay: isVisible ? `${index * 0.1}s` : '0s',
+                  animationFillMode: 'forwards'
+                }}
               >
                 <div className="flex flex-col items-start gap-4">
                   <div className="p-3 rounded-xl bg-primary/10 border border-primary/20">

@@ -23,6 +23,11 @@ All colors MUST be HSL.
     
     --primary-glow: 224 91% 77%;
     --primary-dark: 224 91% 47%;
+    
+    /* Additional accent colors from AceInt */
+    --accent-blue: 215 100% 50%;
+    --accent-purple: 260 60% 60%;
+    --accent-cyan: 190 95% 50%;
 
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
@@ -76,6 +81,11 @@ All colors MUST be HSL.
     
     --primary-glow: 224 91% 77%;
     --primary-dark: 224 91% 47%;
+    
+    /* Additional accent colors from AceInt */
+    --accent-blue: 215 100% 50%;
+    --accent-purple: 260 60% 60%;
+    --accent-cyan: 190 95% 50%;
 
     --secondary: 0 0% 12%;
     --secondary-foreground: 0 0% 98%;
@@ -112,6 +122,10 @@ All colors MUST be HSL.
 @layer base {
   * {
     @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 
   body {
