@@ -17,12 +17,12 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    /* AceInt Blue - Primary Brand Color */
-    --primary: 199 89% 48%;
+    /* AceInt Blue - Primary Brand Color #2b63f6 */
+    --primary: 224 91% 57%;
     --primary-foreground: 0 0% 100%;
     
-    --primary-glow: 199 89% 65%;
-    --primary-dark: 199 89% 35%;
+    --primary-glow: 224 91% 77%;
+    --primary-dark: 224 91% 47%;
 
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
@@ -44,16 +44,16 @@ All colors MUST be HSL.
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 199 89% 48%;
+    --ring: 224 91% 57%;
 
     --radius: 0.75rem;
 
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(199 89% 48%), hsl(199 89% 65%));
+    --gradient-primary: linear-gradient(135deg, hsl(224 91% 57%), hsl(224 91% 77%));
     --gradient-card: linear-gradient(135deg, hsl(0 0% 100%), hsl(210 40% 98%));
     
     /* Shadows */
-    --shadow-glow: 0 0 40px hsl(199 89% 48% / 0.3);
+    --shadow-glow: 0 0 40px hsl(224 91% 57% / 0.3);
     --shadow-card: 0 4px 20px hsl(222.2 84% 4.9% / 0.08);
     
     /* Animations */
@@ -70,12 +70,12 @@ All colors MUST be HSL.
     --popover: 0 0% 8%;
     --popover-foreground: 0 0% 98%;
 
-    /* AceInt Blue - Primary Brand Color (same in dark mode) */
-    --primary: 199 89% 48%;
+    /* AceInt Blue - Primary Brand Color #2b63f6 (same in dark mode) */
+    --primary: 224 91% 57%;
     --primary-foreground: 0 0% 100%;
     
-    --primary-glow: 199 89% 65%;
-    --primary-dark: 199 89% 35%;
+    --primary-glow: 224 91% 77%;
+    --primary-dark: 224 91% 47%;
 
     --secondary: 0 0% 12%;
     --secondary-foreground: 0 0% 98%;
@@ -97,14 +97,14 @@ All colors MUST be HSL.
 
     --border: 0 0% 15%;
     --input: 0 0% 15%;
-    --ring: 199 89% 48%;
+    --ring: 224 91% 57%;
     
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(199 89% 48%), hsl(199 89% 65%));
+    --gradient-primary: linear-gradient(135deg, hsl(224 91% 57%), hsl(224 91% 77%));
     --gradient-card: linear-gradient(135deg, hsl(0 0% 8%), hsl(0 0% 12%));
     
     /* Shadows */
-    --shadow-glow: 0 0 40px hsl(199 89% 48% / 0.4);
+    --shadow-glow: 0 0 40px hsl(224 91% 57% / 0.4);
     --shadow-card: 0 4px 20px hsl(0 0% 0% / 0.3);
   }
 }
