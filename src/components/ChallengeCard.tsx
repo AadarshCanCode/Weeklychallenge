@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
 import { cn } from "@/lib/utils";
+<<<<<<< HEAD
 
 import algoImg from "@/assets/algo.png";
 import reactImg from "@/assets/react.png";
@@ -10,6 +11,14 @@ import apiImg from "@/assets/api.png";
 import cssImg from "@/assets/css.png";
 import dbImg from "@/assets/db.png";
 import { Code2, Component, Users2, Server, Database, Palette, Flame, Trophy, Users, Clock } from "lucide-react";
+=======
+import algoImage from "@/assets/algo.png";
+import reactImage from "@/assets/react.png";
+import codeReviewImage from "@/assets/codereview.png";
+import apiImage from "@/assets/api.png";
+import cssImage from "@/assets/css.png";
+import dbImage from "@/assets/db.png";
+>>>>>>> 4d695a5 (image)
 
 export type Challenge = {
   id: string;
@@ -44,18 +53,48 @@ const categoryIcons = {
   CSS: Palette,
 };
 
-const categoryImages: Record<string, string> = {
-  algo: algoImg,
-  algorithm: algoImg,
-  algorithms: algoImg,
-  react: reactImg,
-  "code review": codeReviewImg,
-  codereview: codeReviewImg,
-  review: codeReviewImg,
-  api: apiImg,
-  css: cssImg,
-  db: dbImg,
-  database: dbImg,
+const getCategoryBackground = (category: string, title: string) => {
+  const lowerTitle = title.toLowerCase();
+
+  if (lowerTitle.includes("algorithm")) {
+    return {
+      image: algoImage,
+    };
+  }
+
+  if (lowerTitle.includes("css") || lowerTitle.includes("animation")) {
+    return {
+      image: cssImage,
+    };
+  }
+
+  if (lowerTitle.includes("react") || (category === "Frontend" && lowerTitle.includes("component"))) {
+    return {
+      image: reactImage,
+    };
+  }
+
+  if (lowerTitle.includes("api") || category === "Backend") {
+    return {
+      image: apiImage,
+    };
+  }
+
+  if (category === "Database" || lowerTitle.includes("database")) {
+    return {
+      image: dbImage,
+    };
+  }
+
+  if (category === "Collaboration" || lowerTitle.includes("review")) {
+    return {
+      image: codeReviewImage,
+    };
+  }
+
+  return {
+    image: algoImage,
+  };
 };
 
 const getCategoryIcon = (category: string, title: string) => {
@@ -66,6 +105,7 @@ const getCategoryIcon = (category: string, title: string) => {
   return categoryIcons[category as keyof typeof categoryIcons] || Code2;
 };
 
+<<<<<<< HEAD
 const getCategoryImage = (category: string, title: string) => {
   if (!category) return undefined;
   const key = category.toLowerCase();
@@ -77,21 +117,26 @@ const getCategoryImage = (category: string, title: string) => {
   }
   return undefined;
 };
+=======
+>>>>>>> 4d695a5 (image)
 export function ChallengeCard({ challenge, className }: ChallengeCardProps) {
+  const { image } = getCategoryBackground(challenge.category, challenge.title);
+
   return (
     <div
       className={cn(
-        "bento-card group relative overflow-hidden",
+        "bento-card group relative overflow-hidden p-0 flex flex-col",
         challenge.featured && "border-primary/50 shadow-[0_0_20px_hsl(var(--primary)/0.2)]",
         className
       )}
     >
       {challenge.featured && (
-        <div className="absolute top-4 right-4">
+        <div className="absolute top-4 right-4 z-10">
           <Flame className="h-5 w-5 text-primary animate-glow-pulse" />
         </div>
       )}
       
+<<<<<<< HEAD
       <div className="space-y-4">
         {/* Category Image / Icon */}
         <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 mb-2 overflow-hidden">
@@ -104,6 +149,22 @@ export function ChallengeCard({ challenge, className }: ChallengeCardProps) {
             return <IconComponent className="h-6 w-6 text-primary" />;
           })()}
         </div>
+=======
+      <div className="relative h-40 w-full overflow-hidden">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `url(${image})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
+      </div>
+
+      <div className="space-y-4 p-6">
+       
+        
+>>>>>>> 4d695a5 (image)
         <div className="flex items-start justify-between gap-4">
           <div>
             <Badge className={cn("challenge-badge border", difficultyColors[challenge.difficulty])}>
