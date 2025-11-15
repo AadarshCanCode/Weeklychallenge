@@ -2,23 +2,14 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
 import { cn } from "@/lib/utils";
-<<<<<<< HEAD
 
-import algoImg from "@/assets/algo.png";
-import reactImg from "@/assets/react.png";
-import codeReviewImg from "@/assets/codereview.png";
-import apiImg from "@/assets/api.png";
-import cssImg from "@/assets/css.png";
-import dbImg from "@/assets/db.png";
-import { Code2, Component, Users2, Server, Database, Palette, Flame, Trophy, Users, Clock } from "lucide-react";
-=======
 import algoImage from "@/assets/algo.png";
 import reactImage from "@/assets/react.png";
 import codeReviewImage from "@/assets/codereview.png";
 import apiImage from "@/assets/api.png";
 import cssImage from "@/assets/css.png";
 import dbImage from "@/assets/db.png";
->>>>>>> 4d695a5 (image)
+import { Code2, Component, Users2, Server, Database, Palette, Flame, Trophy, Users, Clock } from "lucide-react";
 
 export type Challenge = {
   id: string;
@@ -105,20 +96,6 @@ const getCategoryIcon = (category: string, title: string) => {
   return categoryIcons[category as keyof typeof categoryIcons] || Code2;
 };
 
-<<<<<<< HEAD
-const getCategoryImage = (category: string, title: string) => {
-  if (!category) return undefined;
-  const key = category.toLowerCase();
-  if (key in categoryImages) return categoryImages[key];
-  // fallback via title keywords
-  const t = title.toLowerCase();
-  for (const k of Object.keys(categoryImages)) {
-    if (t.includes(k)) return categoryImages[k];
-  }
-  return undefined;
-};
-=======
->>>>>>> 4d695a5 (image)
 export function ChallengeCard({ challenge, className }: ChallengeCardProps) {
   const { image } = getCategoryBackground(challenge.category, challenge.title);
 
@@ -136,20 +113,6 @@ export function ChallengeCard({ challenge, className }: ChallengeCardProps) {
         </div>
       )}
       
-<<<<<<< HEAD
-      <div className="space-y-4">
-        {/* Category Image / Icon */}
-        <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 mb-2 overflow-hidden">
-          {(() => {
-            const imgSrc = getCategoryImage(challenge.category, challenge.title);
-            if (imgSrc) {
-              return <img src={imgSrc} alt={challenge.category} className="h-8 w-8 object-contain" />;
-            }
-            const IconComponent = getCategoryIcon(challenge.category, challenge.title);
-            return <IconComponent className="h-6 w-6 text-primary" />;
-          })()}
-        </div>
-=======
       <div className="relative h-40 w-full overflow-hidden">
         <div
           className="absolute inset-0"
@@ -164,7 +127,6 @@ export function ChallengeCard({ challenge, className }: ChallengeCardProps) {
       <div className="space-y-4 p-6">
        
         
->>>>>>> 4d695a5 (image)
         <div className="flex items-start justify-between gap-4">
           <div>
             <Badge className={cn("challenge-badge border", difficultyColors[challenge.difficulty])}>
