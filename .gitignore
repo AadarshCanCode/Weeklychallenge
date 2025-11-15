@@ -12,6 +12,33 @@ dist
 dist-ssr
 *.local
 
+# Environment files
+.env
+.env.*
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build and coverage
+coverage
+*.tsbuildinfo
+
+# Tooling caches
+.eslintcache
+.parcel-cache
+.cache
+.turbo
+.pnpm-store
+npm-packages-offline-cache
+
+# OS / misc
+Thumbs.db
+ehthumbs.db
+*.orig
+*.pem
+*.key
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

@@ -19,7 +19,11 @@ export function Header() {
   return <header className="fixed top-0 w-full z-50 border-b border-border/20 bg-background/95 backdrop-blur-xl">
       <div className="container mx-auto px-6 py-3 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <img src={theme === "dark" ? logo : logoDark} alt="AceInt" className="h-10 w-auto transition-all duration-300" />
+          <img
+            src={theme === "dark" ? logoDark : logo}
+            alt="AceInt"
+            className="h-10 w-auto transition-all duration-300"
+          />
         </div>
         
         <div className="flex items-center gap-8">

@@ -1,7 +1,10 @@
 import logo from "@/assets/aceint-logo.png";
+import logoDark from "@/assets/aceint-logo-black.png";
+import { useTheme } from "./ThemeProvider";
 import { Twitter, Github, Linkedin, Mail } from "lucide-react";
 
 export function Footer() {
+  const { theme } = useTheme();
   const footerSections = [
     {
       title: "Product",
@@ -48,7 +51,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 mb-8">
           {/* Brand Section */}
           <div className="lg:col-span-2">
-            <img src={logo} alt="AceInt" className="h-10 w-auto mb-4" />
+            <img src={theme === "dark" ? logoDark : logo} alt="AceInt" className="h-10 w-auto mb-4" />
             <p className="text-sm text-muted-foreground leading-relaxed mb-4">
               Empowering innovators to discover, compete, and grow through events and hackathons worldwide.
             </p>

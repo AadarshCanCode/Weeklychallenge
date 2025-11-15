@@ -1,7 +1,7 @@
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { ChallengeGrid } from "@/components/ChallengeGrid";
-import { WhyChooseAceInt } from "@/components/WhyChooseAceInt";
+import MagicBento from "@/components/MagicBento";
 import { Footer } from "@/components/Footer";
 
 const Index = () => {
@@ -9,7 +9,7 @@ const Index = () => {
       <Header />
       <Hero />
       <ChallengeGrid />
-      <WhyChooseAceInt />
+      <MagicBento />
       <Footer />
     </div>;
 };
