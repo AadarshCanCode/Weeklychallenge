@@ -82,7 +82,7 @@ export function ChallengeCard({ challenge, className }: ChallengeCardProps) {
             backgroundPosition: "center",
           }}
         />
-       <div className="absolute inset-0 bg-gradient-to-t dark:from-gray-950 dark:via-gray-950/60 opacity-90" />
+       <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent dark:from-gray-950 dark:to-transparent opacity-100" />
         
         <div className="absolute inset-0 bg-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 mix-blend-overlay" />
       </div>

@@ -40,13 +40,13 @@ const GlobalNavbar = () => {
           <nav className="hidden md:flex items-center gap-6">
             <button 
               onClick={() => handleScroll('#challenges')} 
-              className="text-sm font-medium text-foreground/70 hover:text-primary transition-all hover:scale-105 cursor-pointer bg-transparent border-none"
+              className="text-base font-medium text-foreground/70 hover:text-primary transition-all hover:scale-105 cursor-pointer bg-transparent border-none"
             >
               Challenges
             </button>
             <button 
               onClick={() => handleScroll('#why-choose')} 
-              className="text-sm font-medium text-foreground/70 hover:text-primary transition-all hover:scale-105 cursor-pointer bg-transparent border-none"
+              className="text-base font-medium text-foreground/70 hover:text-primary transition-all hover:scale-105 cursor-pointer bg-transparent border-none"
             >
               Why Choose AceInt
             </button>
