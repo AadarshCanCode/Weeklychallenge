@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from "react";
 import { Button } from "@/components/ui/button";
 import { Trophy, Zap, Target } from "lucide-react";
+import PixelBlast from "./ui/PixelBlast";
 
 const AnimatedCounter = ({ end, duration = 2000 }) => {
   const [count, setCount] = useState(0);
@@ -37,9 +38,22 @@ const AnimatedCounter = ({ end, duration = 2000 }) => {
 
 export function Hero() {
   return (
-    <div className="relative min-h-screen flex flex-col items-center justify-center bg-black overflow-hidden">
-      
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent pointer-events-none z-10" />
+    <div className="relative min-h-screen w-full flex flex-col items-center justify-center bg-black overflow-hidden">
+     <div className="absolute inset-0 w-full h-full [&>canvas]:w-full [&>canvas]:h-full z-[5]">
+        <PixelBlast
+          variant="circle"
+          pixelSize={6}
+          color="#B19EEF"
+          patternScale={4}
+          patternDensity={1.3}
+          pixelSizeJitter={0.5}
+          
+          speed={0.6}
+          edgeFade={0.05}
+          transparent
+        />
+      </div>
+    <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent pointer-events-none z-10" />
 
       <div className="container mx-auto max-w-7xl relative z-20 px-6 py-20">
         <div className="text-center space-y-6">
@@ -70,7 +84,7 @@ export function Hero() {
           <div className="flex flex-wrap items-center justify-center gap-4 pt-8">
             <Button 
               size="lg" 
-              className="rounded-full px-8 py-6 text-base font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transition-all hover:scale-105 border-2 border-blue-400"
+              className="rounded-full px-8 py-6 text-base font-bold bg-indigo-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transition-all hover:scale-105 border-2 border-blue-400"
             >
               <Trophy className="mr-2 h-5 w-5" />
               View Challenges
@@ -98,7 +112,7 @@ export function Hero() {
             
             <div className="relative group">
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl blur opacity-20 group-hover:opacity-30 transition-opacity"></div>
-              <div className="relative p-6 rounded-2xl bg-gradient-to-br from-gray-900 to-black border-2 border-gray-800 hover:border-purple-500/50 transition-all transform hover:scale-105">
+              <div className="relative p-6 rounded-2xl bg-gradient-to-br from-gray-900 to-black border-2 border-gray-800 hover:border-blue-500/50 transition-all transform hover:scale-105">
                 <div className="text-5xl font-black text-purple-500 mb-2">
                   <AnimatedCounter end={48} />
                 </div>
@@ -108,7 +122,7 @@ export function Hero() {
             
             <div className="relative group">
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-500 to-cyan-600 rounded-2xl blur opacity-20 group-hover:opacity-30 transition-opacity"></div>
-              <div className="relative p-6 rounded-2xl bg-gradient-to-br from-gray-900 to-black border-2 border-gray-800 hover:border-emerald-500/50 transition-all transform hover:scale-105">
+              <div className="relative p-6 rounded-2xl bg-gradient-to-br from-gray-900 to-black border-2 border-gray-800 hover:border-blue-500/50 transition-all transform hover:scale-105">
                 <div className="text-5xl font-black text-emerald-500 mb-2">
                   <AnimatedCounter end={15} />K
                 </div>
