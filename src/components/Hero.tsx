@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from "react";
 import { Button } from "@/components/ui/button";
 import { Trophy, Zap, Target } from "lucide-react";
+import LetterGlitch from "./ui/LetterGlitch";
 
 const AnimatedCounter = ({ end, duration = 2000 }) => {
   const [count, setCount] = useState(0);
@@ -38,6 +39,16 @@ const AnimatedCounter = ({ end, duration = 2000 }) => {
 export function Hero() {
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center bg-black overflow-hidden">
+      <div className="absolute inset-0 w-full h-full z-0">
+      <LetterGlitch
+        glitchSpeed={50}
+        glitchColors={["#60a5fa", "#a78bfa", "#06b6d4"]}
+        centerVignette={true}
+        outerVignette={false}
+        smooth={true}
+        characters={"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"}
+      />
+      </div>
       
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent pointer-events-none z-10" />
 
