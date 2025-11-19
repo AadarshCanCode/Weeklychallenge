@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+
 import algoImage from "@/assets/algo.png";
 import reactImage from "@/assets/react.png";
 import codeReviewImage from "@/assets/codereview.png";
@@ -30,9 +31,9 @@ interface ChallengeCardProps {
 }
 
 const difficultyColors = {
-  Easy: "bg-green-500/10 text-green-400 border-green-500/20",
-  Medium: "bg-yellow-500/10 text-yellow-400 border-yellow-500/20",
-  Hard: "bg-red-500/10 text-red-400 border-red-500/20",
+  Easy: "bg-green-500/10 text-green-600 dark:text-green-400 border-green-500/20",
+  Medium: "bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 border-yellow-500/20",
+  Hard: "bg-red-500/10 text-red-600 dark:text-red-400 border-red-500/20",
 };
 
 const getCategoryBackground = (category: string, title: string) => {
@@ -53,23 +54,26 @@ export function ChallengeCard({ challenge, className }: ChallengeCardProps) {
   return (
     <Card
       className={cn(
-        "group relative overflow-hidden flex flex-col border-white/5 bg-gray-950",
+        "group relative overflow-hidden flex flex-col bg-card border-border",
+        
         "transition-all duration-300 ease-out",
         "hover:-translate-y-2 hover:scale-[1.02]", 
-        "hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.6)]",
+        
+        "hover:shadow-xl hover:shadow-blue-500/10 dark:hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.6)]",
         "hover:border-blue-500/50",
-        challenge.featured && "border-blue-500/30 shadow-[0_0_20px_rgba(59,130,246,0.2)]",
+
+        challenge.featured && "border-blue-500/30 shadow-lg shadow-blue-500/10 dark:shadow-[0_0_20px_rgba(59,130,246,0.2)]",
         
         className
       )}
     >
       {challenge.featured && (
         <div className="absolute top-4 right-4 z-20">
-          <Flame className="h-5 w-5 text-blue-400 animate-pulse drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]" />
+          <Flame className="h-5 w-5 text-blue-500 dark:text-blue-400 animate-pulse" />
         </div>
       )}
 
-      <div className="relative h-40 w-full overflow-hidden border-b border-white/5">
+      <div className="relative h-40 w-full overflow-hidden border-b border-border">
         <div
           className="absolute inset-0 transition-transform duration-500 group-hover:scale-110"
           style={{
@@ -78,33 +82,34 @@ export function ChallengeCard({ challenge, className }: ChallengeCardProps) {
             backgroundPosition: "center",
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/60 to-transparent opacity-80" />
-        <div className="absolute inset-0 bg-blue-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 mix-blend-overlay" />
+       <div className="absolute inset-0 bg-gradient-to-t dark:from-gray-950 dark:via-gray-950/60 opacity-90" />
+        
+        <div className="absolute inset-0 bg-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 mix-blend-overlay" />
       </div>
 
-      <CardHeader className="space-y-4 p-6 pb-2">
+      <CardHeader className="space-y-4 p-6 pb-2 relative z-10 -mt-6">
         <div className="flex items-start justify-between gap-4">
           <Badge className={cn("border backdrop-blur-sm", difficultyColors[challenge.difficulty])}>
             {challenge.difficulty}
           </Badge>
-          <div className="flex items-center gap-1 text-blue-400 font-bold drop-shadow-sm">
+          <div className="flex items-center gap-1 text-blue-600 dark:text-blue-400 font-bold">
             <Trophy className="h-4 w-4" />
             <span>{challenge.points}</span>
           </div>
         </div>
         
         <div className="space-y-2">
-          <h3 className="text-xl font-bold text-gray-100 group-hover:text-blue-400 transition-colors drop-shadow-md">
+          <h3 className="text-xl font-bold text-card-foreground group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
             {challenge.title}
           </h3>
-          <p className="text-sm text-gray-400 line-clamp-2 group-hover:text-gray-300 transition-colors">
+          <p className="text-sm text-muted-foreground line-clamp-2">
             {challenge.description}
           </p>
         </div>
       </CardHeader>
 
       <CardContent className="px-6 py-2">
-        <div className="flex items-center gap-4 text-sm text-gray-500 group-hover:text-blue-200/70 transition-colors">
+        <div className="flex items-center gap-4 text-sm text-muted-foreground">
           <div className="flex items-center gap-1">
             <Users className="h-4 w-4" />
             <span>{challenge.participants}</span>
@@ -121,7 +126,7 @@ export function ChallengeCard({ challenge, className }: ChallengeCardProps) {
           className={cn(
             "w-full rounded-full font-semibold transition-all duration-300",
             "bg-blue-600 text-white hover:bg-blue-500",
-            "shadow-lg shadow-blue-900/20 group-hover:shadow-[0_0_20px_rgba(37,99,235,0.6)]"
+            "shadow-lg shadow-blue-500/20 dark:shadow-blue-900/20 group-hover:shadow-blue-500/40 dark:group-hover:shadow-[0_0_20px_rgba(37,99,235,0.6)]"
           )}
           disabled={!challenge.isActive}
           onClick={() => navigate('/event')}
