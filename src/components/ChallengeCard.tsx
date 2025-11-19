@@ -10,6 +10,7 @@ import apiImage from "@/assets/api.png";
 import cssImage from "@/assets/css.png";
 import dbImage from "@/assets/db.png";
 import { Code2, Component, Users2, Server, Database, Palette, Flame, Trophy, Users, Clock } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export type Challenge = {
   id: string;
@@ -98,6 +99,7 @@ const getCategoryIcon = (category: string, title: string) => {
 
 export function ChallengeCard({ challenge, className }: ChallengeCardProps) {
   const { image } = getCategoryBackground(challenge.category, challenge.title);
+  const navigate = useNavigate();
 
   return (
     <div
@@ -162,8 +164,10 @@ export function ChallengeCard({ challenge, className }: ChallengeCardProps) {
         <Button 
           className="w-full rounded-full bg-primary hover:bg-primary-dark transition-all"
           disabled={!challenge.isActive}
+          onClick={() => navigate('/event')}
         >
           {challenge.isActive ? "Join Challenge" : "Coming Soon"}
+          
         </Button>
       </div>
     </div>
