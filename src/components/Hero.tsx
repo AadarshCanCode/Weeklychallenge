@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from "react";
 import { Button } from "@/components/ui/button";
 import { Trophy, Zap, Target } from "lucide-react";
+import  FaultyTerminal  from "./ui/FaultyTerminal";
 
 const AnimatedCounter = ({ end, duration = 2000 }) => {
   const [count, setCount] = useState(0);
@@ -38,6 +39,27 @@ const AnimatedCounter = ({ end, duration = 2000 }) => {
 export function Hero() {
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center bg-black overflow-hidden">
+      <div className="absolute inset-0 w-full h-full z-0">
+        <FaultyTerminal
+          scale={1.5}
+          gridMul={[2, 1]}
+          digitSize={1.2}
+          timeScale={1}
+          pause={false}
+          scanlineIntensity={1}
+          glitchAmount={1}
+          flickerAmount={1}
+          noiseAmp={1}
+          chromaticAberration={0}
+          dither={0}
+          curvature={0}
+          tint="#ffffff"
+          mouseReact={true}
+          mouseStrength={0.5}
+          pageLoadAnimation={false}
+          brightness={1}
+        />
+      </div>
       
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent pointer-events-none z-10" />
 
