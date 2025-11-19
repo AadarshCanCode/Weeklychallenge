@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from "react";
 import { Button } from "@/components/ui/button";
 import { Trophy, Zap, Target } from "lucide-react";
+import { GridScan } from "./ui/GridScan";
 
 const AnimatedCounter = ({ end, duration = 2000 }) => {
   const [count, setCount] = useState(0);
@@ -38,6 +39,20 @@ const AnimatedCounter = ({ end, duration = 2000 }) => {
 export function Hero() {
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center bg-black overflow-hidden">
+      <div className="absolute inset-0 w-full h-full z-0">
+        <GridScan
+          sensitivity={0.55}
+          lineThickness={1}
+          linesColor="black"
+          gridScale={0.1}
+          scanColor="blue"
+          scanOpacity={0.4}
+          enablePost
+          bloomIntensity={0.6}
+          chromaticAberration={0.002}
+          noiseIntensity={0.01}
+        />
+      </div>
       
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent pointer-events-none z-10" />
 
