@@ -1,12 +1,12 @@
 import React from 'react'
-import Hero from '@/components/event/EventBanner'
-import EventPage from '../components/event/EventPage'
+import Hero from '@/components/track/TrackBanner'
+import TrackPage from '../components/track/TrackPage'
 
 const Track = () => {
   return (
     <div>
       <Hero/>
-      <EventPage/>
+      <TrackPage/>
     </div>
   )
 }
