@@ -1,14 +1,12 @@
-import React from 'react'
-import Hero from '@/components/track/TrackBanner'
-import TrackPage from '../components/track/TrackPage'
+import { RegisteredChallenges } from "@/components/RegisteredChallenges";
+import { ProgressTracker } from "@/components/ProgressTracker";
+
 
 const Track = () => {
-  return (
-    <div>
-      <Hero/>
-      <TrackPage/>
-    </div>
-  )
-}
+  return <div className="min-h-screen">
+      <ProgressTracker />
+      <RegisteredChallenges />
+    </div>;
+};
 
-export default Track
+export default Track;
