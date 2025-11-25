@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./Layout";
 import Home from "./pages/Home";
 import EventPage from "./pages/EventPage";
+import TrackPage from "./pages/TrackPage";
 import NotFound from "./pages/NotFound";
 
 const router = createBrowserRouter([
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
       {
         path: "event", 
         element: <EventPage />,
+      },
+      {
+        path: "track", 
+        element: <TrackPage />,
       },
 
     ],

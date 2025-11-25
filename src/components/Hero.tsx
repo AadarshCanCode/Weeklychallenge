@@ -2,6 +2,7 @@ import React, { useState, useEffect} from "react";
 import { Button } from "@/components/ui/button";
 import { Trophy, Zap, Target } from "lucide-react";
 import Squares from "@/components/ui/Squares";
+import { useNavigate } from "react-router-dom";
 
 const AnimatedCounter = ({ end, duration = 2000 }) => {
   const [count, setCount] = useState(0);
@@ -45,6 +46,8 @@ export function Hero() {
     }
     return false;
   });
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const checkDarkMode = () => {
@@ -139,6 +142,7 @@ export function Hero() {
               size="lg" 
               variant="outline" 
               className="rounded-full px-8 py-6 text-base font-bold border-2 border-gray-300 dark:border-gray-700 bg-white/80 dark:bg-black/50 text-gray-700 dark:text-gray-300 backdrop-blur-md hover:bg-gray-100 dark:hover:bg-gray-900 hover:border-gray-400 dark:hover:border-gray-600 transition-all hover:scale-105"
+              onClick={() => navigate('/track')}
             >
               <Target className="mr-2 h-5 w-5" />
               Track Progress
