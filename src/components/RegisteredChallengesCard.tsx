@@ -131,7 +131,7 @@ export function RegisteredChallengesCard({ challenge, className }: ChallengeCard
           disabled={!challenge.isActive}
           onClick={() => navigate('/track/myevent')}
         >
-          {challenge.isActive ? "Join Challenge" : "Coming Soon"}
+          {challenge.isActive ? "View Challenge" : "Coming Soon"}
         </Button>
       </CardFooter>
     </Card>

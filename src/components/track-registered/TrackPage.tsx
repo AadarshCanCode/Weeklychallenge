@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 const EventPage: React.FC = () => {
   const stagesRef = useRef<HTMLDivElement>(null);
   const detailsRef = useRef<HTMLDivElement>(null);
-  const prizesRef = useRef<HTMLDivElement>(null);
+  const leaderboardRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const [activeSection, setActiveSection] = useState<string>("stages");
@@ -24,7 +24,7 @@ const EventPage: React.FC = () => {
     const sections = [
       { ref: stagesRef, key: "stages" },
       { ref: detailsRef, key: "details" },
-      { ref: prizesRef, key: "prizes" }, 
+      { ref: leaderboardRef, key: "leaderboard" }, 
     ];
 
     const scrollTop = containerRef.current.scrollTop;
@@ -45,6 +45,24 @@ const EventPage: React.FC = () => {
       return () => container.removeEventListener("scroll", handleScroll);
     }
   }, []);
+  
+  // sample leaderboard data and current user's team
+  const teams = [
+    { rank: 1, name: "Team Innovate", score: 2450, badge: "🥇" },
+    { rank: 2, name: "VisionX", score: 2380, badge: "🥈" },
+    { rank: 3, name: "Brainwave", score: 2310, badge: "🥉" },
+    { rank: 4, name: "VisionY", score: 2250 },
+    { rank: 5, name: "BrainNotWave", score: 2180 },
+    { rank: 6, name: "CodeCrafters", score: 2120 },
+    { rank: 7, name: "AlgoMasters", score: 2050 },
+    { rank: 8, name: "TechTitans", score: 1990 },
+    { rank: 9, name: "DataDynamos", score: 1920 },
+    { rank: 10, name: "LogicLords", score: 1850 },
+  ];
+
+  // Replace this with real user/team data from auth/context when available
+  const userTeam = { rank: 12, name: "Your Team", score: 1500 };
+  const userInTop = teams.some(t => t.name === userTeam.name || t.rank === userTeam.rank);
 
   return (
     <div className="flex flex-col md:flex-row bg-background text-foreground h-[calc(100vh-64px)]"> 
@@ -84,6 +102,16 @@ const EventPage: React.FC = () => {
           >
             Details
           </p>
+          <p
+            className={`cursor-pointer pb-3 transition-colors ${
+              activeSection === "leaderboard"
+                ? "border-b-2 border-primary text-primary"
+                : "hover:text-primary"
+            }`}
+            onClick={() => scrollToSection(leaderboardRef, "leaderboard")}
+          >
+            Leaderboard
+          </p>
         </div>
 
         <div className="mt-8 space-y-8 px-3 md:px-0">
@@ -95,58 +123,68 @@ const EventPage: React.FC = () => {
             <h2 className="text-xl font-semibold mb-2 text-card-foreground">Event Details</h2>
             <EventDetails/>
           </div>
-        </div>
-      </div>
 
-      <div className="w-full md:w-[340px] md:sticky md:top-0 md:h-[calc(100vh-64px)] overflow-y-auto scrollbar-hide border-t md:border-t-0 md:border-l border-border bg-background md:bg-background/50 md:backdrop-blur-sm flex flex-col justify-between">
-        <div className="p-6 space-y-6">
-          <div className="mt-5">
-            <button className="w-full flex items-center justify-center gap-2 group bg-primary text-primary-foreground font-medium py-2 rounded-lg hover:bg-primary/90 transition cursor-pointer shadow-lg shadow-primary/20">
-              Register
-              <ArrowRight className="h-4 w-4 transition-all duration-200 group-hover:translate-x-1"/>
-            </button>
-            <div className="mt-3 text-muted-foreground text-center">
-              <EventTimer startDate="2025-10-20T19:00:00" label="Event starts in : "/>
-            </div>
+          <div ref={leaderboardRef} className="border border-border rounded-xl bg-card p-6">
+            <h2 className="text-xl font-semibold mb-4 text-card-foreground flex items-center gap-2">
+              <Trophy className="h-5 w-5 text-primary"/> Leaderboard
+            </h2>
+              <div className="space-y-3">
+                {teams.map((team) => {
+                  const isUser = team.name === userTeam.name || team.rank === userTeam.rank;
+                  return (
+                    <div
+                      key={team.rank}
+                      className={`flex items-center justify-between p-4 rounded-lg transition-all ${
+                        team.rank <= 3
+                          ? "bg-gradient-to-r from-primary/10 to-primary/5 border-2 border-primary/30"
+                          : "bg-muted/50 hover:bg-muted border border-border"
+                      } ${isUser ? 'ring-2 ring-primary/20' : ''}`}
+                    >
+                      <div className="flex items-center gap-4">
+                        <div
+                          className={`flex items-center justify-center w-10 h-10 rounded-full font-bold ${
+                            team.rank <= 3
+                              ? "bg-primary text-primary-foreground text-lg"
+                              : "bg-background text-muted-foreground"
+                          }`}
+                        >
+                          {team.badge || team.rank}
+                        </div>
+                        <div>
+                          <p className={`font-semibold ${
+                            team.rank <= 3 ? "text-primary" : isUser ? "text-primary" : "text-foreground"
+                          }`}>
+                            {team.name}{isUser ? ' (You)' : ''}
+                          </p>
+                          <p className="text-sm text-muted-foreground">Score: {team.score}</p>
+                        </div>
+                      </div>
+                      {team.rank <= 3 && (
+                        <div className="text-2xl">{team.badge}</div>
+                      )}
+                    </div>
+                  );
+                })}
+
+                {!userInTop && (
+                  <>
+                    <div className="h-px bg-border my-2" />
+                    <div className="flex items-center justify-between p-4 rounded-lg bg-card/60 border border-border">
+                      <div className="flex items-center gap-4">
+                        <div className="flex items-center justify-center w-10 h-10 rounded-full font-bold bg-background text-muted-foreground">
+                          {userTeam.rank}
+                        </div>
+                        <div>
+                          <p className="font-semibold text-primary">{userTeam.name} <span className="text-sm text-muted-foreground">(You)</span></p>
+                          <p className="text-sm text-muted-foreground">Score: {userTeam.score}</p>
+                        </div>
+                      </div>
+                      <div className="text-sm text-muted-foreground">Rank #{userTeam.rank}</div>
+                    </div>
+                  </>
+                )}
+              </div>
           </div>
-
-          <div className="border border-border rounded-xl p-5 shadow-sm bg-card">
-            <div className="flex items-center justify-between text-[1rem] text-muted-foreground mb-4">
-              <span className="flex items-center gap-2 text-card-foreground">
-                <Users className="w-4 h-4 text-primary" /> Registered
-              </span>
-              <p>748</p>
-            </div>
-            <div className="flex items-center justify-between text-[1rem] text-muted-foreground my-4">
-              <span className="flex items-center gap-2 text-card-foreground">
-                <Users className="w-4 h-4 text-primary" /> Team Size
-              </span>
-              <p>1 - 4 Members</p>
-            </div>
-            <div className="flex items-center justify-between text-[1rem] text-muted-foreground">
-              <span className="flex items-center gap-2 text-card-foreground">
-                <Trophy className="w-4 h-4 text-primary" /> Impressions
-              </span>
-              <p>4,31,277</p>
-            </div>
-          </div>
-
-          <div className="border border-border rounded-xl p-5 shadow-sm bg-card">
-            <p className="font-bold text-primary mb-3 flex items-center gap-2 uppercase"> 
-              <Trophy className="text-primary"/> Leaderboard
-            </p>
-            <ul className="text-[0.9rem] text-muted-foreground space-y-5 mt-5">
-              <li>1. Team Innovate</li>
-              <li>2. VisionX</li>
-              <li>3. Brainwave</li>
-              <li>4. VisionY</li>
-              <li>5. BrainNotWave</li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="border-t border-border text-xs text-center py-3 text-muted-foreground">
-          © 2025 AceInt
         </div>
       </div>
     </div>
