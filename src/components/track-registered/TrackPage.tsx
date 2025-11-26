@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Calendar, Users, MapPin, Trophy, ArrowRight } from "lucide-react";
 import EventTimer from "./TrackTimer";
 import StagesTimeline from "./TrackStagesTimeline";
@@ -6,6 +7,8 @@ import EventDetails from "./TrackDetails";
 import { Button } from "@/components/ui/button"; 
 
 const EventPage: React.FC = () => {
+  const location = useLocation();
+  const isActive = location.state?.isActive ?? true;
   const stagesRef = useRef<HTMLDivElement>(null);
   const detailsRef = useRef<HTMLDivElement>(null);
   const leaderboardRef = useRef<HTMLDivElement>(null);
@@ -116,7 +119,7 @@ const EventPage: React.FC = () => {
 
         <div className="mt-8 space-y-8 px-3 md:px-0">
           <div ref={stagesRef}>
-            <StagesTimeline/>
+            <StagesTimeline isActive={isActive} />
           </div>
 
           <div ref={detailsRef} className="border border-border rounded-xl bg-card p-6">

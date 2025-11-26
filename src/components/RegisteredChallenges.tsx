@@ -69,6 +69,17 @@ const challenges: Challenge[] = [
     isActive: true,
     featured: true,
   },
+  {
+    id: "7",
+    title: "Intro to Algorithms",
+    description: "Solve 5 basic algorithm problems focusing on sorting and searching.",
+    difficulty: "Easy",
+    points: 200,
+    participants: 890,
+    deadline: "3 days",
+    category: "Algorithms",
+    isActive: false,
+  },
 ];
 
 export function RegisteredChallenges() {
