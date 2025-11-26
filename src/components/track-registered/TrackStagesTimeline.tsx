@@ -1,7 +1,11 @@
 import React from "react";
 import { Calendar, Clock, Award, ArrowRight } from "lucide-react";
 
-const StagesTimeline: React.FC = () => {
+interface StagesTimelineProps {
+  isActive?: boolean;
+}
+
+const StagesTimeline: React.FC<StagesTimelineProps> = ({ isActive = true }) => {
   const handleAttempt = (stage: string) => {
     // placeholder: replace with navigation or attempt flow
     if (typeof window !== "undefined") {
@@ -29,14 +33,16 @@ const StagesTimeline: React.FC = () => {
                   <span>• 45-60 minutes</span>
                 </div>
               </div>
-              <div className="ml-4">
-                <button
-                  onClick={() => handleAttempt("Stage 1")}
-                  className="bg-primary text-primary-foreground font-medium py-1 px-3 rounded-md hover:bg-primary/90 transition"
-                >
-                  Attempt now
-                </button>
-              </div>
+              {isActive && (
+                <div className="ml-4">
+                  <button
+                    onClick={() => handleAttempt("Stage 1")}
+                    className="bg-primary text-primary-foreground font-medium py-1 px-3 rounded-md hover:bg-primary/90 transition"
+                  >
+                    Attempt now
+                  </button>
+                </div>
+              )}
             </div>
             <div className="text-foreground/80 text-sm leading-relaxed mt-3">
               <p className="mb-2">
@@ -66,14 +72,16 @@ const StagesTimeline: React.FC = () => {
                   <span>• 90 minutes</span>
                 </div>
               </div>
-              <div className="ml-4">
-                <button
-                  onClick={() => handleAttempt("Stage 2")}
-                  className="bg-primary text-primary-foreground font-medium py-1 px-3 rounded-md hover:bg-primary/90 transition"
-                >
-                  Attempt now
-                </button>
-              </div>
+              {isActive && (
+                <div className="ml-4">
+                  <button
+                    onClick={() => handleAttempt("Stage 2")}
+                    className="bg-primary text-primary-foreground font-medium py-1 px-3 rounded-md hover:bg-primary/90 transition"
+                  >
+                    Attempt now
+                  </button>
+                </div>
+              )}
             </div>
             <div className="text-foreground/80 text-sm leading-relaxed mt-3">
               <p className="mb-2">
@@ -103,14 +111,16 @@ const StagesTimeline: React.FC = () => {
                   <span>• 15-20 minutes per candidate</span>
                 </div>
               </div>
-              <div className="ml-4">
-                <button
-                  onClick={() => handleAttempt("Stage 3")}
-                  className="bg-primary text-primary-foreground font-medium py-1 px-3 rounded-md hover:bg-primary/90 transition"
-                >
-                  Attempt now
-                </button>
-              </div>
+              {isActive && (
+                <div className="ml-4">
+                  <button
+                    onClick={() => handleAttempt("Stage 3")}
+                    className="bg-primary text-primary-foreground font-medium py-1 px-3 rounded-md hover:bg-primary/90 transition"
+                  >
+                    Attempt now
+                  </button>
+                </div>
+              )}
             </div>
             <div className="text-foreground/80 text-sm leading-relaxed mt-3">
               <p className="mb-2">
@@ -140,14 +150,16 @@ const StagesTimeline: React.FC = () => {
                   <span>• instantaneous</span>
                 </div>
               </div>
-              <div className="ml-4">
-                <button
-                  onClick={() => handleAttempt("Result Announcement")}
-                  className="bg-primary text-primary-foreground font-medium py-1 px-3 rounded-md hover:bg-primary/90 transition"
-                >
-                  Attempt now
-                </button>
-              </div>
+              {isActive && (
+                <div className="ml-4">
+                  <button
+                    onClick={() => handleAttempt("Result Announcement")}
+                    className="bg-primary text-primary-foreground font-medium py-1 px-3 rounded-md hover:bg-primary/90 transition"
+                  >
+                    Attempt now
+                  </button>
+                </div>
+              )}
             </div>
             <div className="text-foreground/80 text-sm leading-relaxed mt-3">
               <p>

@@ -122,17 +122,29 @@ export function RegisteredChallengesCard({ challenge, className }: ChallengeCard
       </CardContent>
 
       <CardFooter className="p-6 pt-4 mt-auto">
-        <Button 
-          className={cn(
-            "w-full rounded-full font-semibold transition-all duration-300",
-            "bg-blue-600 text-white hover:bg-blue-500",
-            "shadow-lg shadow-blue-500/20 dark:shadow-blue-900/20 group-hover:shadow-blue-500/40 dark:group-hover:shadow-[0_0_20px_rgba(37,99,235,0.6)]"
-          )}
-          disabled={!challenge.isActive}
-          onClick={() => navigate('/track/myevent')}
-        >
-          {challenge.isActive ? "View Challenge" : "Coming Soon"}
-        </Button>
+        {challenge.isActive ? (
+          <Button
+            className={cn(
+              "w-full rounded-full font-semibold transition-all duration-300",
+              "bg-blue-600 text-white hover:bg-blue-500",
+              "shadow-lg shadow-blue-500/20 dark:shadow-blue-900/20 group-hover:shadow-blue-500/40 dark:group-hover:shadow-[0_0_20px_rgba(37,99,235,0.6)]"
+            )}
+            onClick={() => navigate('/track/myevent')}
+          >
+            View Challenge
+          </Button>
+        ) : (
+          <Button
+            className={cn(
+              "w-full rounded-full font-semibold transition-all duration-300",
+              "bg-blue-200 text-white border border-blue-100",
+              "opacity-95"
+            )}
+             onClick={() => navigate('/track/myevent', { state: { isActive: false } })}
+          >
+            Challenge Inactive
+          </Button>
+        )}
       </CardFooter>
     </Card>
   );
