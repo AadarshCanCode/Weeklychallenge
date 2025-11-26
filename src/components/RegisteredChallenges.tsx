@@ -77,7 +77,7 @@ export function RegisteredChallenges() {
       <div className="container mx-auto max-w-7xl">
         <div className="text-center space-y-4 mb-12 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold">
-            Active <span className="gradient-text">Challenges</span>
+            Registered <span className="gradient-text">Challenges</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Choose your challenge and start earning points. New challenges added every week!

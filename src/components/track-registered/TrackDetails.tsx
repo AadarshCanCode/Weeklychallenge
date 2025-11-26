@@ -26,10 +26,6 @@ const EventDetails: React.FC = () => {
         <li>Foster a competitive environment with leaderboards</li>
         <li>Encourage clarity in approach, code efficiency, and correctness</li>
       </ul>
-
-      <button className="flex items-center gap-1.5 cursor-pointer w-fit text-primary hover:underline font-semibold mt-3">
-        Register now <ArrowRight className="h-4 w-4 mt-1" />
-      </button>
     </div>
   );
 };
