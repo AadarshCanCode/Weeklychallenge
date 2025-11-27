@@ -1,5 +1,11 @@
 import React, { useState } from "react";
 import { RegisteredChallengesCard, Challenge } from "./RegisteredChallengesCard";
+import algoImage from "@/assets/algo.png";
+import reactImage from "@/assets/react.png";
+import codeReviewImage from "@/assets/codereview.png";
+import apiImage from "@/assets/api.png";
+import cssImage from "@/assets/css.png";
+import dbImage from "@/assets/db.png";
 
 const challenges: Challenge[] = [
   {
@@ -86,6 +92,18 @@ const challenges: Challenge[] = [
 export function RegisteredChallenges() {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const statuses = ["Completed", "Ongoing", "Todo"];
+
+  const getImage = (category: string, title: string) => {
+    const lowerTitle = title.toLowerCase();
+    if (lowerTitle.includes("algorithm")) return algoImage;
+    if (lowerTitle.includes("css") || lowerTitle.includes("animation")) return cssImage;
+    if (lowerTitle.includes("react") || (category === "Frontend" && lowerTitle.includes("component"))) return reactImage;
+    if (lowerTitle.includes("api") || category === "Backend") return apiImage;
+    if (category === "Database" || lowerTitle.includes("database")) return dbImage;
+    if (category === "Collaboration" || lowerTitle.includes("review")) return codeReviewImage;
+    return algoImage;
+  };
+
   return (
     <section id="challenges" className="py-20 px-4">
       <div className="container mx-auto max-w-7xl">
@@ -97,69 +115,70 @@ export function RegisteredChallenges() {
             Choose your challenge and start earning points. New challenges added every week!
           </p>
         </div>
-        
-        <div className="animate-slide-up overflow-x-auto">
-          <table className="w-full text-left border-collapse">
-            <thead>
-              <tr className="text-sm text-muted-foreground border-b border-border">
-                <th className="py-3 px-4">C No.</th>
-                <th className="py-3 px-4">C Name</th>
-                <th className="py-3 px-4">C. Tag Line</th>
-                <th className="py-3 px-4">Status</th>
-                <th className="py-3 px-4">Points / Score</th>
-                <th className="py-3 px-4">Registered At</th>
-                <th className="py-3 px-4">Actions</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-border">
-              {challenges.map((challenge, idx) => {
-                const status = statuses[idx % statuses.length];
-                return (
-                  <tr key={challenge.id} className="bg-card">
-                    <td className="py-3 px-4 align-top text-sm">{idx + 1}</td>
-                    <td className="py-3 px-4 align-top">
-                      <div className="font-semibold">{challenge.title}</div>
-                      <div className="text-xs text-muted-foreground">{challenge.category}</div>
-                    </td>
-                    <td className="py-3 px-4 align-top text-sm text-muted-foreground">{challenge.description}</td>
-                    <td className="py-3 px-4 align-top">
-                      <span className={`px-2 py-1 rounded-full text-xs font-medium ${status === 'Completed' ? 'bg-green-100 text-green-700' : status === 'Ongoing' ? 'bg-yellow-100 text-yellow-700' : 'bg-gray-100 text-gray-700'}`}>
-                        {status}
-                      </span>
-                    </td>
-                    <td className="py-3 px-4 align-top text-sm">{challenge.points}</td>
-                    <td className="py-3 px-4 align-top text-sm text-muted-foreground">{challenge.deadline}</td>
-                    <td className="py-3 px-4 align-top text-sm">
-                      <div className="relative inline-block">
-                        <button
-                          onClick={() => setOpenMenu(openMenu === challenge.id ? null : challenge.id)}
-                          className="px-2 py-1 rounded-md hover:bg-muted transition"
-                          aria-expanded={openMenu === challenge.id}
-                        >
-                          ⋮
-                        </button>
-                        {openMenu === challenge.id && (
-                          <div className="absolute right-0 mt-2 w-48 bg-card border border-border rounded-md shadow-lg z-20">
-                            <ul className="py-1">
-                              <li>
-                                <button className="w-full text-left px-4 py-2 text-sm hover:bg-muted">View Feedback</button>
-                              </li>
-                              <li>
-                                <button className="w-full text-left px-4 py-2 text-sm hover:bg-muted">View Challenge</button>
-                              </li>
-                              <li>
-                                <button className="w-full text-left px-4 py-2 text-sm hover:bg-muted">View Leaderboard</button>
-                              </li>
-                            </ul>
-                          </div>
-                        )}
-                      </div>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+
+        <div className="animate-slide-up">
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[700px] text-left">
+              <thead>
+                <tr className="text-sm text-muted-foreground border-b border-border">
+                  <th className="py-3 px-4">Contest</th>
+                  <th className="py-3 px-4">Name</th>
+                  <th className="py-3 px-4">Status</th>
+                  <th className="py-3 px-4">Points / Score</th>
+                  <th className="py-3 px-4">Actions</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border">
+                {challenges.map((c, idx) => {
+                  const status = statuses[idx % statuses.length];
+                  const img = getImage(c.category, c.title);
+                  return (
+                    <tr key={c.id} className="bg-card">
+                      <td className="py-3 px-4 align-top">
+                        <img src={img} alt={c.title} className="w-20 h-12 object-cover rounded-md" />
+                      </td>
+                      <td className="py-3 px-4 align-top">
+                        <div className="font-semibold">{c.title}</div>
+                        <div className="text-xs text-muted-foreground">Registered {c.deadline} ago</div>
+                      </td>
+                      <td className="py-3 px-4 align-top">
+                        <span className={`px-2 py-1 rounded-full text-xs font-medium ${status === 'Completed' ? 'bg-green-100 text-green-700' : status === 'Ongoing' ? 'bg-yellow-100 text-yellow-700' : 'bg-gray-100 text-gray-700'}`}>
+                          {status}
+                        </span>
+                      </td>
+                      <td className="py-3 px-4 align-top">{c.points}</td>
+                      <td className="py-3 px-4 align-top">
+                        <div className="relative inline-block">
+                          <button
+                            onClick={() => setOpenMenu(openMenu === c.id ? null : c.id)}
+                            className="px-2 py-1 rounded-md hover:bg-muted transition"
+                            aria-expanded={openMenu === c.id}
+                          >
+                            ⋮
+                          </button>
+                          {openMenu === c.id && (
+                            <div className="absolute right-0 mt-2 w-48 bg-card border border-border rounded-md shadow-lg z-20">
+                              <ul className="py-1">
+                                <li>
+                                  <button className="w-full text-left px-4 py-2 text-sm hover:bg-muted">View Feedback</button>
+                                </li>
+                                <li>
+                                  <button className="w-full text-left px-4 py-2 text-sm hover:bg-muted">View Challenge</button>
+                                </li>
+                                <li>
+                                  <button className="w-full text-left px-4 py-2 text-sm hover:bg-muted">View Leaderboard</button>
+                                </li>
+                              </ul>
+                            </div>
+                          )}
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </section>
