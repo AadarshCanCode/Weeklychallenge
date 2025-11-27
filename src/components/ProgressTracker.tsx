@@ -1,5 +1,7 @@
+import React, { useState, useEffect } from "react";
 import { Progress } from "@/components/ui/progress";
 import { Target, Zap, Star, TrendingUp } from "lucide-react";
+import Squares from "@/components/ui/Squares";
 
 export function ProgressTracker() {
   const stats = [
@@ -29,9 +31,66 @@ export function ProgressTracker() {
     },
   ];
 
+  const [isDarkModeState, setIsDarkModeState] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const hasDarkClass = document.documentElement.classList.contains('dark');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      return hasDarkClass || (!document.documentElement.classList.contains('light') && prefersDark);
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    const checkDarkMode = () => {
+      const hasDarkClass = document.documentElement.classList.contains('dark');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setIsDarkModeState(hasDarkClass || (!document.documentElement.classList.contains('light') && prefersDark));
+    };
+
+    checkDarkMode();
+
+    const observer = new MutationObserver(checkDarkMode);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    mediaQuery.addEventListener('change', checkDarkMode);
+
+    return () => {
+      observer.disconnect();
+      mediaQuery.removeEventListener('change', checkDarkMode);
+    };
+  }, []);
+
   return (
-    <section id="progress" className="py-20 px-4">
-      <div className="container mx-auto max-w-6xl">
+    <section id="progress" className="py-20 px-4 relative overflow-hidden">
+      {!isDarkModeState && (
+        <div className="absolute inset-0 w-full h-full z-0">
+          <Squares
+            squareSize={80}
+            speed={0.3}
+            direction="diagonal"
+            borderColor="rgba(150, 150, 150, 0.25)"
+            hoverFillColor="rgba(100, 100, 100, 0.1)"
+            isDarkMode={false}
+          />
+        </div>
+      )}
+      {isDarkModeState && (
+        <div className="absolute inset-0 w-full h-full z-0">
+          <Squares
+            squareSize={80}
+            speed={0.3}
+            direction="diagonal"
+            borderColor="rgba(255, 255, 255, 0.15)"
+            hoverFillColor="rgba(255, 255, 255, 0.08)"
+            isDarkMode={true}
+          />
+        </div>
+      )}
+
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white via-white/50 dark:from-black dark:via-black/50 to-transparent pointer-events-none z-10" />
+
+      <div className="container mx-auto max-w-6xl relative z-20">
         <div className="text-center space-y-4 mb-12 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold">
             Your <span className="gradient-text">Progress</span>
