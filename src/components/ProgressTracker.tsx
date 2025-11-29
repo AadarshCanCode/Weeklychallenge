@@ -90,7 +90,7 @@ export function ProgressTracker() {
 
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white via-white/50 dark:from-black dark:via-black/50 to-transparent pointer-events-none z-10" />
 
-      <div className="container mx-auto max-w-6xl relative z-20">
+      <div className="container mx-auto max-w-6xl relative z-20 pointer-events-none">
         <div className="text-center space-y-4 mb-12 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold">
             Your <span className="gradient-text">Progress</span>
@@ -100,7 +100,7 @@ export function ProgressTracker() {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-slide-up">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-slide-up pointer-events-auto">
           {stats.map((stat, index) => (
             <div key={index} className="bento-card space-y-4">
               <div className="flex items-center gap-3">
@@ -126,7 +126,7 @@ export function ProgressTracker() {
           ))}
         </div>
         
-        <div className="mt-8 bento-card text-center animate-slide-up">
+        <div className="mt-8 bento-card text-center animate-slide-up pointer-events-auto">
           <div className="space-y-4">
             <div className="inline-flex p-4 rounded-full bg-primary/10">
               <Trophy className="h-8 w-8 text-primary" />
