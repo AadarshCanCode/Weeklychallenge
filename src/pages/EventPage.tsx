@@ -1,11 +1,11 @@
 import React from 'react'
-import Hero from '@/components/event/EventBanner'
+import EventBanner from '@/components/event/EventBanner'
 import EventPage from '../components/event/EventPage'
 
 const Event1 = () => {
   return (
     <div>
-      <Hero/>
+      <EventBanner/>
       <EventPage/>
     </div>
   )

@@ -104,7 +104,7 @@ export function Hero() {
       
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white via-white/50 dark:from-black dark:via-black/50 to-transparent pointer-events-none z-10" />
 
-      <div className="container mx-auto max-w-7xl relative z-20 px-6 py-20">
+      <div className="container mx-auto max-w-7xl relative z-20 px-6 py-20 pointer-events-none">
         <div className="text-center space-y-6">
           
           <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-emerald-500/10 border-2 border-emerald-500/50 backdrop-blur-sm shadow-lg shadow-emerald-500/20">
@@ -130,7 +130,7 @@ export function Hero() {
             Level up your skills with gamified challenges. Compete, learn, and earn rewards while mastering new concepts.
           </p>
           
-          <div className="flex flex-wrap items-center justify-center gap-4 pt-8">
+          <div className="flex flex-wrap items-center justify-center gap-4 pt-8 pointer-events-auto">
             <Button 
               size="lg" 
               className="rounded-full px-8 py-6 text-base font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transition-all hover:scale-105 border-2 border-blue-400"
@@ -149,7 +149,7 @@ export function Hero() {
             </Button>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto pt-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto pt-12 pointer-events-auto">
             <div className="relative group">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl blur opacity-20 group-hover:opacity-30 transition-opacity"></div>
               <div className="relative p-6 rounded-2xl bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-black border-2 border-gray-200 dark:border-gray-800 hover:border-blue-500/50 transition-all transform hover:scale-105">
