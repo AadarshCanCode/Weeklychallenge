@@ -1,11 +1,24 @@
 import React, { useState } from "react";
-import { RegisteredChallengesCard, Challenge } from "./RegisteredChallengesCard";
 import algoImage from "@/assets/algo.png";
 import reactImage from "@/assets/react.png";
 import codeReviewImage from "@/assets/codereview.png";
 import apiImage from "@/assets/api.png";
 import cssImage from "@/assets/css.png";
 import dbImage from "@/assets/db.png";
+import { useNavigate } from "react-router-dom";
+
+interface Challenge {
+  id: string;
+  title: string;
+  description: string;
+  difficulty: "Easy" | "Medium" | "Hard";
+  points: number;
+  participants: number;
+  deadline: string;
+  category: string;
+  isActive: boolean;
+  featured?: boolean;
+}
 
 const challenges: Challenge[] = [
   {
@@ -92,6 +105,7 @@ const challenges: Challenge[] = [
 export function RegisteredChallenges() {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const statuses = ["Completed", "Ongoing", "Todo"];
+  const navigate = useNavigate();
 
   const getImage = (category: string, title: string) => {
     const lowerTitle = title.toLowerCase();
@@ -160,7 +174,9 @@ export function RegisteredChallenges() {
                             <div className="absolute right-0 mt-2 w-48 bg-card border border-border rounded-md shadow-lg z-20">
                               <ul className="py-1">
                                 <li>
-                                  <button className="w-full text-left px-4 py-2 text-sm hover:bg-muted">View Feedback</button>
+                                  <button className="w-full text-left px-4 py-2 text-sm hover:bg-muted"
+                                  onClick={() => navigate('/track/feedback')}>
+                                  View Feedback</button>
                                 </li>
                                 <li>
                                   <button className="w-full text-left px-4 py-2 text-sm hover:bg-muted">View Challenge</button>

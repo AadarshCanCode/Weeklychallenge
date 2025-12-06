@@ -4,8 +4,8 @@ import Layout from "./Layout";
 import Home from "./pages/Home";
 import EventPage from "./pages/EventPage";
 import TrackPage from "./pages/TrackPage";
-import RegisteredEvents from "./pages/RegisteredEventPage";
 import NotFound from "./pages/NotFound";
+import FeedbackPage from "./pages/FeedbackPage";
 
 const router = createBrowserRouter([
   {
@@ -29,8 +29,8 @@ const router = createBrowserRouter([
             element: <TrackPage />,
           },
           {
-            path: "myevent", 
-            element: <RegisteredEvents />,
+            path: "feedback", 
+            element: <FeedbackPage />,
           },
 
         ],
